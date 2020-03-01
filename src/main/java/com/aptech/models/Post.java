@@ -7,7 +7,7 @@ public class Post {
     String image;
     String category;
     String createdAt;
-    String updateAt;
+    String updatedAt;
 
     public Post() {
     }
@@ -60,11 +60,11 @@ public class Post {
         this.createdAt = createdAt;
     }
 
-    public String getUpdateAt() {
-        return updateAt;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
