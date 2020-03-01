@@ -25,6 +25,7 @@
         <p style="color:red">${errMsg}</p>
     </c:if>
 
+    <br><br>
     <button type="submit">Register</button>
 </form>
 

@@ -21,7 +21,7 @@
         <tr>
             <td>${post.id}</td>
             <td>${post.title}</td>
-            <td>${post.image}</td>
+            <td><img style="width: 80px; height: 80px;" src="/aptechonline/uploads/${post.image}" alt=""></td>
             <td>${post.category}</td>
             <td>${post.createdAt}</td>
             <td><a href="aptechonline/posts/edit?id=${post.id}">

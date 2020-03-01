@@ -8,18 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
-@WebServlet("/admin/register")
-public class AdminRegisterController extends HttpServlet {
+@WebServlet("/admin/edit")
+public class AdminEditController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String cpassword = request.getParameter("cpassword");
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         if (password.equals(cpassword)) {
             MessageDigest digest = null;
@@ -40,22 +46,28 @@ public class AdminRegisterController extends HttpServlet {
                 user.setLastname(lastname);
                 user.setUsername(username);
                 user.setPassword(hashPassword);
+                user.setUpdatedAt(timeStamp);
+                user.setId(id);
 
-                AdminDao.saveAdmin(user);
-                response.sendRedirect("/aptechonline/admin");
-
+                AdminDao.updateUser(user);
+                response.sendRedirect("/aptechonline/admin/edit?id=" + id);
 
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
         } else {
-            String errMsg = "Confirm password do not match !";
-            request.setAttribute("errMsg", errMsg);
-            request.getRequestDispatcher("register.jsp").include(request, response);
+            response.sendRedirect("/aptechonline/admin/edit?id=" + id);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Admin user = new Admin();
+
+        user.setId(id);
+        List<Admin> singleUser = AdminDao.getSingleAdmin(user);
+
+        request.setAttribute("singleUser", singleUser);
+        request.getRequestDispatcher("edit.jsp").forward(request, response);
     }
 }
