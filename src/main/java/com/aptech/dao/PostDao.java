@@ -53,6 +53,31 @@ public class PostDao {
         return allPosts;
     }
 
+    // show all posts
+    public static List<Post> getAllPostsByOrder() {
+        Connection con = connect();
+        List<Post> allPosts = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts ORDER BY id DESC LIMIT 3");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(rs.getString("id")));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setImage(rs.getString("image"));
+                post.setCategory(rs.getString("category"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
+
+                allPosts.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allPosts;
+    }
+
     //delete post
     public static void deletePost(Post post) {
         Connection con = connect();

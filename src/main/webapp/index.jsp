@@ -1,7 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/aptechonline/css/style.css">
     <title>AptechOnline | Home</title>
 </head>
 <body>
@@ -23,16 +24,16 @@
 <main>
     <div class="container">
         <section>
-            <article>
-                <h1><a href="">Heading Title</a></h1>
-                <img src="visit-nepal.jpg">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </article>
+            <c:forEach items="${allPosts}" var="post">
+                <article>
+                    <h1><a href="">${post.title}</a></h1>
+                    <span>${post.createdAt}</span>
+
+                    <img src="/aptechonline/uploads/${post.image}" alt="">
+                    <p>${post.content}</p>
+                    <a class="readmore" href="#">Readmore</a>
+                </article>
+            </c:forEach>
         </section>
         <aside>
             <h3>Recent Updates</h3>
