@@ -1,0 +1,124 @@
+* {
+    font-family: arial;
+    margin: 0;
+    padding: 0;
+    color: #222;
+    box-sizing: border-box;
+}
+
+p {
+    line-height: 28px;
+    padding: 15px 0;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #ccc;
+}
+
+nav {
+    height: 60px;
+    display: flex;
+}
+
+nav .brand {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    line-height: 60px;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    display: block;
+    color: white;
+    transition: all 0.5s;
+
+}
+
+main {
+    overflow: hidden;
+}
+
+main section {
+    width: 70%;
+    float: left;
+}
+
+article {
+    padding: 15px;
+}
+
+article h1 {
+    padding: 15px 0;
+}
+
+article h1 a {
+    text-decoration: none;
+}
+
+article img {
+    width: 100%;
+    height: 300px;
+}
+
+main aside {
+    padding: 15px;
+    width: 30%;
+    float: left;
+}
+
+aside h3 {
+    background: orange;
+    padding: 5px 10px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+aside ul li:last-child {
+    border-bottom: none;
+}
+
+aside ul li a {
+    text-decoration: none;
+    display: block;
+}
+
+aside ul li a:hover {
+    color: rgba(0, 0, 255, 1);
+}
+
+footer {
+    background: #222;
+    height: 200px;
+}
+
+footer p {
+    color: white;
+    line-height: 200px;
+}
