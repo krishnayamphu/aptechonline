@@ -24,15 +24,14 @@
 <main>
     <div class="container">
         <section>
-            <c:forEach items="${allPosts}" var="post">
-                <article>
-                    <h1><a href="/aptechonline/post?id=${post.id}">${post.title}</a></h1>
-                    <span>${post.createdAt}</span>
+            <c:forEach items="${singlePost}" var="post">
+                <div class="single-post">
+                    <h1 class="post-title"><a href="">${post.title}</a></h1>
+                    <span class="timestamp">${post.createdAt}</span>
 
-                    <img src="/aptechonline/uploads/${post.image}" alt="">
-                    <p>${post.content}</p>
-                    <a class="readmore" href="/aptechonline/post?id=${post.id}">Read more</a>
-                </article>
+                    <img class="post-image" src="/aptechonline/uploads/${post.image}" alt="">
+                    <p class="post-content">${post.content}</p>
+                </div>
             </c:forEach>
         </section>
         <aside>

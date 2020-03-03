@@ -78,6 +78,33 @@ public class PostDao {
         return allPosts;
     }
 
+    // get single post
+    public static List<Post> getPost(Post myPost) {
+        Connection con = connect();
+        List<Post> singlePost = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts WHERE id=?");
+            ps.setInt(1, myPost.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(rs.getString("id")));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setImage(rs.getString("image"));
+                post.setCategory(rs.getString("category"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
+
+                singlePost.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return singlePost;
+    }
+
+
     //delete post
     public static void deletePost(Post post) {
         Connection con = connect();

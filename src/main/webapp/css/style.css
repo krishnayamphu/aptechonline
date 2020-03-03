@@ -113,6 +113,18 @@ main aside {
     float: left;
 }
 
+.single-post {
+    background-color: #cccccc;
+}
+
+.single-post .post-title {
+    font-size: 40px;
+    padding: 15px 0;
+}
+
+.post-title a {
+    text-decoration: none;
+}
 aside h3 {
     background: orange;
     padding: 5px 10px;
