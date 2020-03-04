@@ -3,15 +3,16 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/aptechonline/css/style.css">
-    <title>AptechOnline | Home</title>
+    <title>AptechOnline | ${title}</title>
 </head>
 <body>
 
 <%@include file="header.jsp" %>
+
 <main>
     <div class="container">
         <section>
-            <c:forEach items="${allPosts}" var="post">
+            <c:forEach items="${allCategoryPosts}" var="post">
                 <article>
                     <h1><a href="/aptechonline/post?id=${post.id}">${post.title}</a></h1>
                     <span>${post.createdAt}</span>
@@ -33,6 +34,8 @@
     </div>
 </main>
 
+
 <%@include file="footer.jsp" %>
+
 </body>
 </html>

@@ -58,7 +58,7 @@ public class PostDao {
         Connection con = connect();
         List<Post> allPosts = new ArrayList<>();
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts ORDER BY id DESC LIMIT 3");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts ORDER BY id DESC LIMIT 10");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Post post = new Post();
@@ -70,6 +70,81 @@ public class PostDao {
                 post.setCreatedAt(rs.getString("created_at"));
                 post.setUpdatedAt(rs.getString("updated_at"));
 
+                allPosts.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allPosts;
+    }
+
+    // get all posts by category
+    public static List<Post> getPostsByCategory(Post myPost) {
+        Connection con = connect();
+        List<Post> allPosts = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts WHERE category=?");
+            ps.setString(1, myPost.getCategory());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(rs.getString("id")));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setImage(rs.getString("image"));
+                post.setCategory(rs.getString("category"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
+
+                allPosts.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allPosts;
+    }
+
+    // get recent posts
+    public static List<Post> getRecentPosts() {
+        Connection con = connect();
+        List<Post> allPosts = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts ORDER BY id DESC LIMIT 5");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(rs.getString("id")));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setImage(rs.getString("image"));
+                post.setCategory(rs.getString("category"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
+                allPosts.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allPosts;
+    }
+
+    // get recent posts by category
+    public static List<Post> getRecentPostsByCategory(Post myPost) {
+        Connection con = connect();
+        List<Post> allPosts = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM posts WHERE category=? ORDER BY id DESC LIMIT 5");
+            ps.setString(1, myPost.getCategory());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(Integer.parseInt(rs.getString("id")));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setImage(rs.getString("image"));
+                post.setCategory(rs.getString("category"));
+                post.setCreatedAt(rs.getString("created_at"));
+                post.setUpdatedAt(rs.getString("updated_at"));
                 allPosts.add(post);
             }
         } catch (SQLException e) {
@@ -104,6 +179,23 @@ public class PostDao {
         return singlePost;
     }
 
+    //save post
+    public static void updatePost(Post post) {
+        Connection con = connect();
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE posts SET title=?,content=?,image=?,category=?,updated_at=? WHERE id=?");
+            ps.setString(1, post.getTitle());
+            ps.setString(2, post.getContent());
+            ps.setString(3, post.getImage());
+            ps.setString(4, post.getCategory());
+            ps.setString(5, post.getUpdatedAt());
+            ps.setInt(6, post.getId());
+            int staus = ps.executeUpdate();
+            System.out.println("Data Updated");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     //delete post
     public static void deletePost(Post post) {

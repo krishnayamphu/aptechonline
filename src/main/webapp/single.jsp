@@ -7,26 +7,14 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <a class="brand" href="">AptechOnline</a>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">LifeStyle</a></li>
-                <li><a href="#">Entertainment</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<%@include file="header.jsp" %>
 
 <main>
     <div class="container">
         <section>
             <c:forEach items="${singlePost}" var="post">
                 <div class="single-post">
-                    <h1 class="post-title"><a href="">${post.title}</a></h1>
+                    <h1 class="post-title">${post.title}</h1>
                     <span class="timestamp">${post.createdAt}</span>
 
                     <img class="post-image" src="/aptechonline/uploads/${post.image}" alt="">
@@ -37,21 +25,15 @@
         <aside>
             <h3>Recent Updates</h3>
             <ul>
-                <li><a href="">Link 1</a></li>
-                <li><a href="">Link 1</a></li>
-                <li><a href="">Link 1</a></li>
-                <li><a href="">Link 1</a></li>
-                <li><a href="">Link 1</a></li>
+                <c:forEach items="${recentPosts}" var="post">
+                    <li><a href="/aptechonline/post?id=${post.id}">${post.title}</a></li>
+                </c:forEach>
             </ul>
         </aside>
     </div>
 </main>
 
-<footer>
-    <div class="container">
-        <p>&copy; copyright 2020, AptechOnline.</p>
-    </div>
-</footer>
+<%@include file="footer.jsp" %>
 
 </body>
 </html>

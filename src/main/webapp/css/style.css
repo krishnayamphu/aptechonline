@@ -114,11 +114,28 @@ main aside {
 }
 
 .single-post {
-    background-color: #cccccc;
+    padding: 15px
 }
 
 .single-post .post-title {
     font-size: 40px;
+    padding: 15px 0;
+}
+
+.single-post .timestamp {
+    font-style: italic;
+    font-size: 14px;
+    color: #cccccc;
+    float: right;
+}
+
+.single-post .post-image {
+    width: 100%;
+    max-height: 500px;
+}
+
+.single-post .post-content {
+    text-align: justify;
     padding: 15px 0;
 }
 

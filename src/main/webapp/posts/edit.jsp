@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New Post</title>
+    <title>Edit Post</title>
     <style>
         .modal {
             width: 100%;
@@ -33,21 +33,27 @@
 </head>
 <body>
 <%@include file="../admin/admin-header.jsp" %>
-<h2>Create New Post</h2>
-<form name="myForm" action="create" method="post">
-    <input type="text" name="title" placeholder="title">
-    <br><br>
+<h2>Post Details</h2>
+<form name="myForm" action="edit" method="post">
+    <c:forEach items="${singlePost}" var="post">
+        <input type="hidden" name="id" value="${post.id}">
+        <input type="text" name="title" value="${post.title}" placeholder="title">
+        <br><br>
 
-    <textarea name="content" placeholder="content"></textarea>
-    <br><br>
+        <textarea rows="6" cols="10" name="content" placeholder="content">${post.content}</textarea>
+        <br><br>
 
-    <input type="text" name="image" placeholder="select image" value="default.jpg">
-    <button type="button" id="btnImage">Choose Image</button>
-    <br><br>
+        <input type="text" name="image" placeholder="select image" value="${post.image}">
+        <button type="button" id="btnImage">Choose Image</button>
+        <br><br>
+        <img style="width: 100px; display: block" src="/aptechonline/uploads/${post.image}" alt="">
+        <br><br>
 
-    <input type="text" name="category" placeholder="category" value="Uncategory">
-    <br><br>
-    <button type="submit">Create Post</button>
+        <input type="text" name="category" placeholder="category" value="${post.category}">
+        <br><br>
+    </c:forEach>
+
+    <button type="submit">Update Post</button>
 </form>
 
 <div class="modal">
@@ -69,7 +75,6 @@
         $("#btnImage").click(function () {
             $(".modal").css({"display": "block"});
         });
-
         //hide modal
         $("#close").click(function () {
             $(".modal").css({"display": "none"});

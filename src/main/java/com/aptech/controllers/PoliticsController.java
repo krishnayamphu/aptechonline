@@ -9,19 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/home")
-public class HomeController extends HttpServlet {
+@WebServlet("/politics")
+public class PoliticsController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Post> allPosts = PostDao.getAllPostsByOrder();
-        List<Post> recentPosts = PostDao.getRecentPosts();
-        request.setAttribute("allPosts", allPosts);
+        Post post = new Post();
+        post.setCategory("Politics");
+        List<Post> allCategoryPosts = PostDao.getPostsByCategory(post);
+        List<Post> recentPosts = PostDao.getRecentPostsByCategory(post);
+
+        request.setAttribute("title", "Politics");
+        request.setAttribute("allCategoryPosts", allCategoryPosts);
         request.setAttribute("recentPosts", recentPosts);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("category.jsp").forward(request, response);
     }
 }

@@ -5,7 +5,7 @@
     <title>Edit User</title>
 </head>
 <body>
-
+<%@include file="admin-header.jsp" %>
 <h2>User Details</h2>
 
 <form action="edit" method="post">

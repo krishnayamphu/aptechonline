@@ -66,7 +66,6 @@ public class AdminEditController extends HttpServlet {
 
         user.setId(id);
         List<Admin> singleUser = AdminDao.getSingleAdmin(user);
-
         request.setAttribute("singleUser", singleUser);
         request.getRequestDispatcher("edit.jsp").forward(request, response);
     }

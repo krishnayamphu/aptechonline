@@ -4,7 +4,7 @@
     <title>Register Admin</title>
 </head>
 <body>
-
+<%@include file="admin-header.jsp" %>
 <h2>Register New Admin User</h2>
 
 <form action="register" method="post">

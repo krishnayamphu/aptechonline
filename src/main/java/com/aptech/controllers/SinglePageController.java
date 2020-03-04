@@ -23,8 +23,10 @@ public class SinglePageController extends HttpServlet {
         post.setId(id);
 
         List<Post> singlePost = PostDao.getPost(post);
+        List<Post> recentPosts = PostDao.getRecentPosts();
 
         request.setAttribute("singlePost", singlePost);
+        request.setAttribute("recentPosts", recentPosts);
         request.getRequestDispatcher("single.jsp").forward(request, response);
     }
 }

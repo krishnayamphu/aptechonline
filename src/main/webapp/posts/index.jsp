@@ -2,10 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New Post</title>
+    <title>Manage Posts</title>
 </head>
 <body>
-
+<%@include file="../admin/admin-header.jsp" %>
 <h2>Manage Posts</h2>
 <table border="1">
     <tr>
@@ -24,7 +24,7 @@
             <td><img style="width: 80px; height: 80px;" src="/aptechonline/uploads/${post.image}" alt=""></td>
             <td>${post.category}</td>
             <td>${post.createdAt}</td>
-            <td><a href="aptechonline/posts/edit?id=${post.id}">
+            <td><a href="/aptechonline/posts/edit?id=${post.id}">
                 <button>Edit</button>
             </a>
                 <form action="posts" method="post">

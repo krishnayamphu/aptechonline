@@ -21,7 +21,7 @@ public class LoginController extends HttpServlet {
         if (isLoggedIn) {
             HttpSession session = request.getSession();
             session.setAttribute("admin", "Admin");
-            response.sendRedirect("dashboard");
+            response.sendRedirect("admin");
         } else {
             String errMsg = "Invalid username or password.";
             request.setAttribute("errMsg", errMsg);

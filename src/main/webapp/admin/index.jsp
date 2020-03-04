@@ -5,7 +5,8 @@
     <title>Manage Admin Users</title>
 </head>
 <body>
-<a href="admin/register">Create Admin User</a>
+<%@include file="admin-header.jsp" %>
+
 <h2>Manage Admin Users</h2>
 <table border="1">
     <tr>
