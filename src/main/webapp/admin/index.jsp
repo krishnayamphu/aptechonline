@@ -8,6 +8,7 @@
 <%@include file="admin-header.jsp" %>
 
 <h2>Manage Admin Users</h2>
+<a href="/aptechonline/admin/register">New Admin User</a>
 <table border="1">
     <tr>
         <th>#ID</th>

@@ -7,6 +7,7 @@
 <body>
 <%@include file="../admin/admin-header.jsp" %>
 <h2>Manage Posts</h2>
+<a href="/aptechonline/posts/create">Create New Post</a>
 <table border="1">
     <tr>
         <th>#ID</th>
