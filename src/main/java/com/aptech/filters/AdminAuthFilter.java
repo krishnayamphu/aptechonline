@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter({"/admin", "/admin/register", "/admin/media", "/posts", "/posts/edit", "/posts/create"})
+@WebFilter({"/admin", "/admin/register", "/admin/media", "/admin/mail", "/posts", "/posts/edit", "/posts/create"})
 public class AdminAuthFilter implements Filter {
     public void destroy() {
     }

@@ -16,7 +16,7 @@
 <hr>
 
 <h2>Manage Media Files</h2>
-<c:forEach items="${allFileList}" var="file">
+<c:forEach items="${allFileList}" var="f;;ile">
     <a href="http://localhost:8080/webdemo/preview?name=${file}">
         <img style="width: 100px; margin:5px;" src="http://localhost:8080/aptechonline/uploads/${file}" alt="">
     </a>
